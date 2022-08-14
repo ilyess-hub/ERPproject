@@ -1,0 +1,113 @@
+<div class="flex flex-col flex-auto min-w-0">
+
+
+
+    <!-- Header -->
+    <div
+        class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+
+
+        <div class="w-22">
+            <img src="assets/images/croco/67372345_109018630440933_8444232885954674688_n.jpg" />
+        </div>
+        <div class="flex-1 min-w-0">
+            <!-- Title -->
+            <div class="mt-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    {{ title }}
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="flex-auto p-6 sm:p-10">
+
+        <div class="max-w-3xl">
+
+            <form class="flex flex-col mt-4 px-8 pt-10 bg-card shadow rounded overflow-hidden" #testForm="ngForm" (ngSubmit)="addOrEditTest()" >
+
+                <!-- grade field -->
+                <div class="flex">
+                    <mat-form-field class="flex-auto">
+                        <input matInput [placeholder]="'Grade'" [(ngModel)]="test.grade"
+                        name="grade">
+                        <mat-icon class="icon-size-5"></mat-icon>
+                    </mat-form-field>
+                </div>
+
+
+                <!-- duration -->
+                <div class="flex">
+                    <mat-form-field class="flex-auto">
+                        <input matInput [placeholder]="'Duration'"   name="Duration" [(ngModel)]="test.duration"  [disabled]="disabled">
+                        <mat-icon class="icon-size-5"></mat-icon>
+                    </mat-form-field>
+                </div>
+
+
+        
+
+                <!-- type of test -->
+                <div class="flex flex-col gt-xs:flex-row">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+
+                        <mat-select [placeholder]="'Type'" name="type" [(ngModel)]="test.typeOfTest">
+
+                            <mat-option value="final">final</mat-option>
+                            <mat-option value="daily">daily</mat-option>
+
+                        </mat-select>
+
+                    </mat-form-field>
+                </div>
+
+
+                <!-- Students -->
+                <div class="flex flex-col gt-xs:flex-row">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+
+                        <mat-select [placeholder]="'Student Names'" name="studentNames" [(ngModel)]="test._idStudent">
+                            <mat-option *ngFor="let student of students" [value]="student._id">{{student.firstName}}  {{student.lastName}}</mat-option>
+                          
+                        </mat-select>
+
+                    </mat-form-field>
+
+                </div>
+
+
+                <!-- Traineeships -->
+                <div class="flex flex-col gt-xs:flex-row">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+
+                        <mat-select [placeholder]="'Traineeship Name'" name="traineeshipNames" [(ngModel)]="test._idTraineeship">
+                            <mat-option *ngFor="let traineeship of traineeships" [value]="traineeship._id">{{traineeship.nameOfTraineeship}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+
+
+
+                </div>
+
+
+                <!-- buttons -->
+                <div class="flex items-center justify-end border-t -mx-8 mt-8 px-8 py-5 bg-gray-50 dark:bg-gray-700">
+                    <button
+                        class="px-6 ml-3"
+                        mat-flat-button
+                        [color]="'primary'">
+                       {{title}}
+                    </button>
+                </div>
+
+        
+
+            </form>
+
+
+        </div>
+
+    </div>
+</div>

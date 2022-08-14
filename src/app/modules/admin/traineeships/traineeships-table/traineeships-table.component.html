@@ -1,0 +1,196 @@
+<div class="flex flex-col flex-auto w-full">
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-8 w-full mt-8">
+        <!-- Recent transactions table -->
+        <div
+            class="xl:col-span-2 flex flex-col flex-auto bg-card shadow rounded-2xl overflow-hidden" >
+
+            <div class="w-20">
+                <img src="assets/images/croco/67372345_109018630440933_8444232885954674688_n.jpg" />
+            </div>
+
+            <div class="p-6">
+                <div
+                    class="mr-4 text-lg font-medium tracking-tight leading-6 truncate"
+                >
+                    Traineeships table
+                </div>
+            </div>
+            <div class="overflow-x-auto mx-6">
+                <table
+                    class="w-full bg-transparent"
+                    mat-table
+                    matSort
+                    [dataSource]="traineeshipsDataSource"
+                >
+                    <!--  ID -->
+                    <ng-container matColumnDef="_id">
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                             ID
+                        </th>
+                        <td mat-cell *matCellDef="let i = index">
+                            <span
+                                class="pr-6 font-medium text-sm text-secondary whitespace-nowrap"
+                                >{{ i + 1 }}
+                            </span>
+                        </td>
+                    </ng-container>
+
+                    <!-- Name -->
+                    <ng-container
+                        matColumnDef="nameOfTraineeship"
+                        class="mx-0.5"
+                    >
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                            traineeship Name
+                        </th>
+                        <td mat-cell *matCellDef="let traineeship">
+                            <span class="pr-6 whitespace-nowrap">
+                                {{ traineeship.nameOfTraineeship }}
+                            </span>
+                        </td>
+                    </ng-container>
+
+                     <!-- type -->
+                    <ng-container matColumnDef="traineeship">
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                            Type
+                        </th>
+                        <td mat-cell *matCellDef="let traineeship">
+                            <span class="pr-6 whitespace-nowrap">
+                                {{ traineeship.traineeship }}
+                            </span>
+                        </td>
+                    </ng-container>
+
+                    <!-- price -->
+                    <ng-container matColumnDef="price">
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                            Price(DT)
+                        </th>
+                        <td mat-cell *matCellDef="let traineeship">
+                            {{ traineeship.price }}
+                        </td>
+                    </ng-container>
+
+                    <!-- Start Date -->
+                    <ng-container matColumnDef="startDate">
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                            Start Date
+                        </th>
+                        <td mat-cell *matCellDef="let traineeship">
+                            <span class="pr-6 whitespace-nowrap">
+                                {{ traineeship.startDate}}
+                            </span>
+                        </td>
+                    </ng-container>
+
+                    <!-- final Date -->
+                    <ng-container matColumnDef="finalDate">
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                            final Date
+                        </th>
+                        <td mat-cell *matCellDef="let traineeship">
+                            <span class="pr-6 whitespace-nowrap">
+                                {{ traineeship.finalDate  }}
+                            </span>
+                        </td>
+                    </ng-container>
+
+                    <!-- State -->
+                    <ng-container matColumnDef="state">
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                            State
+                        </th>
+                        <td mat-cell *matCellDef="let traineeship">
+                            {{ traineeship.state }}
+                        </td>
+                    </ng-container>
+
+                    <!-- hours -->
+                    <ng-container matColumnDef="numberOfHours">
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                            Number of Hours
+                        </th>
+                        <td mat-cell *matCellDef="let traineeship">
+                            {{ traineeship.numberOfHours }}
+                        </td>
+                    </ng-container>
+
+                    <!-- buttons -->
+
+                    <!-- <ng-container matColumnDef="actions">
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef >
+                            actions
+                        </th>
+
+                        <td mat-cell *matCellDef="let traineeship">
+
+                           
+                           <div>
+                            <button  mat-flat-button color="primary"   (click)="Edit(traineeship._id)"  >
+                                Edit
+                            </button>
+                        
+                       
+                        
+                            <button mat-flat-button color="warn"    (click)="Delete(traineeship._id)" >
+                                Delete
+                            </button>
+                           </div>
+                        
+                        </td>
+                        
+                    </ng-container> -->
+
+
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                            Action
+                        </th>
+                        <td mat-cell *matCellDef="let traineeship">
+
+                            <button mat-flat-button color="primary"class="m-1" (click)="Edit(traineeship._id)">
+                                edit
+                            </button>
+                            
+
+                            <button mat-flat-button color="warn" class="m-1" (click)="Delete(traineeship._id)" >
+                                Delete
+                            </button>
+                        </td>
+                    </ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <tr
+                        mat-header-row
+                        *matHeaderRowDef="traineeshipsTableColumns"
+                    ></tr>
+                    <tr
+                        class="order-row h-16"
+                        mat-row
+                        *matRowDef="let row; columns: traineeshipsTableColumns"
+                    ></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

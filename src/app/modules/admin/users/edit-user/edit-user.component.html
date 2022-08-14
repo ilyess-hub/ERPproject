@@ -1,0 +1,112 @@
+<div class="flex flex-col flex-auto items-center sm:justify-center min-w-0">
+    <div
+        class="w-full sm:w-auto py-8 px-4 sm:p-12 sm:rounded-2xl sm:shadow sm:bg-card"
+    >
+        <div class="w-full max-w-80 sm:w-80 mx-auto sm:mx-0">
+            <!-- Logo -->
+            <div class="w-20">
+                <img src="assets/images/croco/67372345_109018630440933_8444232885954674688_n.jpg" />
+            </div>
+
+            <!-- Title -->
+            <div
+                class="mt-8 text-4xl font-extrabold tracking-tight leading-tight"
+            >
+                Edit User
+            </div>
+           
+
+            <!-- Sign Up form -->
+            <form class="mt-8" #editForm="ngForm">
+                <!--First Name  -->
+                <mat-form-field class="w-full">
+                    <mat-label>First Name</mat-label>
+                    <input
+                        name="firstName"
+                        matInput
+                        [(ngModel)]="user.firstName"
+                    />
+                </mat-form-field>
+                  <!-- Last Name  -->
+                <mat-form-field class="w-full">
+                    <mat-label>Last Name</mat-label>
+                    <input
+                        name="lastName"
+                        matInput
+                        [(ngModel)]="user.lastName"
+                    />
+                </mat-form-field>
+
+                <!-- Email field -->
+                <mat-form-field class="w-full">
+                    <mat-label>Email address</mat-label>
+                    <input name="email" matInput [(ngModel)]="user.email" />
+                </mat-form-field>
+
+                <!--  role -->
+                <mat-form-field class="w-full">
+                    <mat-label>Role</mat-label>
+                    <input name="role" matInput [(ngModel)]="user.role" />
+                </mat-form-field>
+
+                <!--  ID Card -->
+                <mat-form-field class="w-full">
+                    <mat-label>ID Card</mat-label>
+                    <input matInput name="ID_Card" [(ngModel)]="user.ID_Card" />
+                </mat-form-field>
+
+                 <!-- phone number  -->
+                <mat-form-field class="w-full">
+                    <mat-label>Phone Number</mat-label>
+                    <input
+                        matInput
+                        name="phoneNumber"
+                        [(ngModel)]="user.phoneNumber"
+                    />
+                </mat-form-field>
+
+                <!--First Name  -->
+                <mat-form-field class="w-full">
+                    <mat-label>Address</mat-label>
+                    <input matInput name="address" [(ngModel)]="user.address" />
+                </mat-form-field>
+
+                <!-- patente  -->
+                <mat-form-field class="w-full">
+                    <mat-label>patent</mat-label>
+                    <input matInput name="patent" [(ngModel)]="user.patent" />
+                </mat-form-field>
+
+                <!-- activityArea  -->
+                <mat-form-field class="w-full">
+                    <mat-label>activityArea</mat-label>
+                    <input
+                        matInput
+                        name="activityArea"
+                        [(ngModel)]="user.activityArea"
+                    />
+                </mat-form-field>
+
+                <!--Tax Registration Number   -->
+                <mat-form-field class="w-full">
+                    <mat-label>Tax Registration Number</mat-label>
+                    <input
+                        matInput
+                        name="taxRegistrationNumber"
+                        [(ngModel)]="user.taxRegistrationNumber"
+                    />
+                </mat-form-field>
+
+                <!-- Submit button -->
+                <button
+                    class="fuse-mat-button-large w-full mt-6"
+                    mat-flat-button
+                    [color]="'primary'"
+                    (click)="edit()"
+                >
+                    Edit user
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

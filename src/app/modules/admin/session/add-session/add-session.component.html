@@ -1,0 +1,84 @@
+<div class="flex flex-col flex-auto min-w-0">
+    <!-- Header -->
+    <div
+        class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent"
+    >
+
+    <div class="w-20">
+        <img src="assets/images/croco/67372345_109018630440933_8444232885954674688_n.jpg" />
+    </div>
+        <div class="flex-1 min-w-0">
+            <!-- Title -->
+            <div class="mt-2">
+                <h2
+                    class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate"
+                >
+                    {{ title }}
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="flex-auto p-6 sm:p-10">
+        <div class="max-w-3xl">
+            <form     class="flex flex-col mt-8 p-8 pb-4 bg-card rounded-2xl shadow overflow-hidden"     #addForm="ngForm"     (ngSubmit)="add()"  >
+
+
+
+                <!--  Session name -->
+                <div class="flex flex-col gt-xs:flex-row">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label> Session Name</mat-label>
+
+                        <input
+                            matInput
+                            placeholder="Session Name"
+                            [(ngModel)]="session.nameSession"
+                            name="nameSession"
+                        />
+                    </mat-form-field>
+                </div>
+
+
+
+
+                 <!-- duration -->
+                <div class="flex flex-col gt-xs:flex-row">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label>duration</mat-label>
+                        <input
+                            matInput
+                            placeholder="duration"
+                            [(ngModel)]="session.duration"
+                            name="duration"
+                        />
+                    </mat-form-field>
+                </div>
+
+
+
+                  <!-- date of session -->
+                  <div class="flex flex-col gt-xs:flex-row">
+                    <mat-form-field class="flex-auto gt-xs:pr-3">
+                        <mat-label>dateOfSession</mat-label>
+                        <input
+                            matInput
+                            placeholder="dateOfSession"
+                            [(ngModel)]="session.dateOfSession"
+                            name="dateOfSession"
+                        />
+                    </mat-form-field>
+                </div>
+
+                <!-- Submit Button -->
+        
+                <div>
+                    <button mat-button color="accent" type="submit">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

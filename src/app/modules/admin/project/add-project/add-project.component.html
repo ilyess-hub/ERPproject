@@ -1,0 +1,102 @@
+
+
+    <div class="flex flex-col flex-auto min-w-0">
+        <!-- Header -->
+    <div
+    class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+
+
+    <div class="w-22">
+        <img src="assets/images/croco/67372345_109018630440933_8444232885954674688_n.jpg" />
+    </div>
+    <div class="flex-1 min-w-0">
+        <!-- Title -->
+        <div class="mt-2">
+            <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                {{ title }}
+            </h2>
+        </div>
+    </div>
+</div>
+        
+        <div class="flex-auto p-6 sm:p-10">
+            <div class="max-w-3xl">
+    
+    
+                <form class="flex flex-col mt-4 px-8 pt-10 bg-card shadow rounded overflow-hidden" #projectForm="ngForm"
+                    (ngSubmit)="addOrEditProject()">
+    
+
+                    <!-- project name -->
+                    <div class="flex">
+                        <mat-form-field class="flex-auto">
+                            <input matInput placeholder="name Project" name="nameProject"
+                                [(ngModel)]="project.nameProject" />
+                        </mat-form-field>
+                    </div>
+    
+                    <!-- project description -->
+                    <div class="flex">
+                        <mat-form-field class="flex-auto">
+                            <input matInput placeholder="description" name="description"
+                                [(ngModel)]="project.description" />
+                        </mat-form-field>
+                    </div>
+    
+    
+                    <!-- duration -->
+                    <div class="flex">
+                        <mat-form-field class="flex-auto">
+                            <input matInput placeholder="duration" name="duration" [(ngModel)]="project.duration" />
+                        </mat-form-field>
+                    </div>
+    
+    
+                    <!-- type of traineeship -->
+                    <div class="flex flex-col gt-xs:flex-row">
+                        <mat-form-field class="flex-auto gt-xs:pr-3">
+                            <mat-select placeholder="traineeship" name="traineeship" [(ngModel)]="project.traineeship">
+                                <mat-option value="PFE">PFE</mat-option>
+                                <mat-option value="ETE">ETE</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+    
+    
+                    <!-- trainee name -->
+                    <div class="flex flex-col gt-xs:flex-row">
+                        <mat-form-field class="flex-auto gt-xs:pl-3">
+                            <mat-select placeholder="trainee name" [(ngModel)]="project._idTrainee" name="trainee">
+                                <mat-option *ngFor="let trainee of trainees" [value]="trainee._id">{{ trainee.firstName }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+    
+    
+                    <!-- professor name -->
+                    <div class="flex flex-col gt-xs:flex-row">
+                        <mat-form-field class="flex-auto gt-xs:pl-3">
+                            <mat-select placeholder="professor name" [(ngModel)]="project._idProfessor" name="professor">
+                                <mat-option *ngFor="let professor of professors" [value]="professor._id">{{ professor.firstName }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+    
+    
+    
+                     <!-- button -->
+                    <div class="flex items-center justify-end border-t -mx-8 mt-8 px-8 py-5 bg-gray-50 dark:bg-gray-700">
+                        <button class="px-6 ml-3" mat-flat-button color="primary">
+                            {{ title }}
+                        </button>
+                    </div>
+               
+    
+                </form>
+            </div>
+        </div>
+
+
+    </div>
