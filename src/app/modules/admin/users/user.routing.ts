@@ -7,6 +7,6 @@ import { UserTableComponent } from "./user-table/user-table.component";
 
 export const userRoutes:Route[]=[
     {path:'signUp' , component:SignUpUserComponent },
-    {path:'editUser/:id' , component:EditUserComponent },
-    {path:'usersTable' , component:UserTableComponent },
+    {path:'edit/:id' , component:EditUserComponent },
+    {path:'users' , component:UserTableComponent },
 ]

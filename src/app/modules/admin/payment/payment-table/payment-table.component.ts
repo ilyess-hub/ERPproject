@@ -11,11 +11,12 @@ import { PaymentService } from '../service/payment.service';
 export class PaymentTableComponent implements OnInit {
 
   paymentsDataSource: MatTableDataSource<any>
-  paymentsTableColumns: string[] = ['amount', 'type Of Payment', 'student Name','traineeship Name','action'];
+  paymentsTableColumns: string[] = ['payment','amount', 'type Of Payment', 'student Name','traineeship Name','action'];
   
   constructor(private paymentService:PaymentService,private router:Router) { }
 
   ngOnInit(): void {
+    
     this.paymentService.getAllPayments().subscribe(data=>{
       console.log(data);
       this.paymentsDataSource=data.payments

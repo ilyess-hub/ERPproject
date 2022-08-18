@@ -8,7 +8,8 @@ router.post('/', (req, res) => {
     console.log('here into add Files', req.body);
     // add object to db
     const fileObj = new File({
-        details:req.body.details,
+    details:req.body.details,
+    _idPayment:req.body._idPayment,
     _idStudent:req.body._idStudent
     });
     fileObj.save()
@@ -23,7 +24,7 @@ router.get('/', (req, res) => {
             console.log('error in data base', err)
         } else {
             res.status(200).json({
-                Files: docs
+                files: docs
             });
 
         }
@@ -38,7 +39,7 @@ router.get('/:id', (req, res) => {
         console.log('result of get by id', result)
         if (result) {
             res.status(200).json({
-                File: result
+                file: result
             })
         }
 
@@ -52,20 +53,20 @@ router.put('/:id', (req, res) => {
     console.log('here into edit File', req.body);
 
     const obj = new File({
-        _id: req.body._id,
+        _idFile: req.body._idFile,
         details:req.body.details,
+        _idPayment:req.body._idPayment,
         _idStudent:req.body._idStudent
     })
-    File.updateOne({ _id: req.params.id }, obj).then((result) => {
+    File.updateOne({ _idFile: req.params.id }, obj).then((result) => {
         console.log('after update', result)
         if (result) {
             res.status(200).json({
-                message: obj 
+                file: obj 
             })
         }
 
     })
-
 
 })
 
@@ -83,4 +84,79 @@ router.delete('/:id', (req, res) => {
     })
 })
 
+router.get("/find/allFiles",(req,res)=>{
+    File.aggregate(
+        [
+
+        {
+           $lookup:{
+
+            from: "payments",
+            localField: "_idPayment",
+            foreignField: "_id",
+            as: "payments"
+           }
+          },
+          
+          {
+           $unwind:{
+            path: "$payments",
+           }
+          },
+          
+          {
+            $lookup:{
+                from: "traineeships",
+            localField: "payments._idTraineeship",
+            foreignField: "_id",
+            as: "traineeships"
+            }
+          },
+          
+          {
+           $lookup:{
+
+            from: "users",
+            localField: "_idStudent",
+            foreignField: "_id",
+            as: "students"
+           }
+          },
+          
+          {
+          $project:{
+
+            "total":1,
+          "traineeships.nameOfTraineeship":1,
+          "payments.amount":1,
+          "students.firstName":1,
+          "students.lastName":1,
+          "students._id":1,
+          "details":1
+          }
+          },
+          
+          {
+           $group:{
+            _idFile:{$first:"$_id"},
+            _id: "$students._id",
+            firstName:{$first:"$students.firstName"},
+            lastName:{$first:"$students.lastName"},
+            nameOfTraineeship:{$addToSet:"$traineeships.nameOfTraineeship"},
+            total: {
+                $sum: {$toInt:"$payments.amount"}
+              },
+            details:{$first:"$details"},
+           }
+          }
+
+    ],(error, docs) => {
+        res.status(200).json({
+        files: docs,
+        });
+        }
+    
+    
+    )
+})
 module.exports=router

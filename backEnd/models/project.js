@@ -3,6 +3,7 @@ const projectSchema = mongoose.Schema({
     nameProject: String,
     description: String,
     duration: String,
+    
     _idTrainee: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

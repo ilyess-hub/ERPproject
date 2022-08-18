@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserService } from '../service/user.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class SignUpUserComponent implements OnInit {
   title:string='Sign Up'
   id:any;
 
-  constructor(private _formBuilder:FormBuilder,private userService:UserService,private router : Router ) { }
+  constructor(private _formBuilder:FormBuilder,private userService:UserService,private router:Router ) { }
 
   ngOnInit(): void {
     this.signUpForm = this._formBuilder.group({
@@ -39,8 +39,9 @@ export class SignUpUserComponent implements OnInit {
     console.log(this.signUpForm.value);
     this.userService.signUp(this.signUpForm.value).subscribe(data=>{
       console.log(data);
+      this.router.navigate(['users/users'])
+      
     })
-    this.router.navigate([`users/usersTable`])
     
   }
 

@@ -11,7 +11,7 @@ import { UserService } from '../service/user.service';
 export class UserTableComponent implements OnInit {
   usersDataSource: MatTableDataSource<any>
   usersTableColumns: string[] = ['firstName', 'lastName', 'email', 'role','action'];
-
+  data:any=[{firstName:'hello',lastName:'hello',email:'hello@hello',role:'user'}]
 
   constructor(private userService:UserService,private router:Router) { }
 
@@ -24,18 +24,20 @@ export class UserTableComponent implements OnInit {
     
   }
   edit(id:any){
-    this.router.navigate([`/users/editUser/${id}`])
+    this.router.navigate([`/users/edit/${id}`])
 
   }
+  delete(id:any){
+    this.userService.deleteUser(id).subscribe(data=>{
+      console.log(data);
+      this.userService.getAllUsers().subscribe(data=>{
+        console.log(data);
+        this.usersDataSource=data.Users
+        
+      })
 
-  delete(id :Number){
-    this.userService.deleteUser(id).subscribe((data) => {
-      console.log('data that will be deleted', data.user)
-    this.userService.getAllUsers().subscribe((data) => {
-      this.usersDataSource = data.Users
+      
     })
-      });
-
   }
 
 }

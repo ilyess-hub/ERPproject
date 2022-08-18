@@ -9,7 +9,6 @@ router.post('/', (req, res) => {
     const invoiceObj = new Invoice({
         amout:req.body.amout,
         typeOfDocument:req.body.typeOfDocument,
-        _idClient:req.body._idClient,
         _idFile:req.body._idFile
      
 
@@ -58,7 +57,6 @@ router.put('/:id', (req, res) => {
     const obj = new Invoice({
         _id: req.body._id,
         typeOfDocument:req.body.typeOfDocument,
-        _idClient:req.body._idClient,
         _idFile:req.body._idFile
 
 

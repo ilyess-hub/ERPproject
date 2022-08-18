@@ -1,5 +1,7 @@
+const { string } = require('joi');
 const mongoose = require('mongoose');
 const paymentSchema = mongoose.Schema({
+    paymentName:String,
     amount: String,
     typeOfPayment:
     {
@@ -18,6 +20,5 @@ const paymentSchema = mongoose.Schema({
         ref: 'User'
     }
 });
-
 const payment = mongoose.model('Payment', paymentSchema);
 module.exports = payment;

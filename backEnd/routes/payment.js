@@ -8,6 +8,7 @@ router.post('/', (req, res) => {
     console.log('here into add payments', req.body);
     // add object to db
     const paymentObj = new Payment({
+        paymentName:req.body.paymentName,
        amount : req.body.amount,
        typeOfPayment : req.body.typeOfPayment,
        _idTraineeship: req.body._idTraineeship,
@@ -56,6 +57,7 @@ router.put('/:id', (req, res) => {
 
     const obj = new Payment({
         _id: req.body._id,
+        paymentName:req.body.paymentName,
         amount : req.body.amount,
         typeOfPayment : req.body.typeOfPayment,
         _idTraineeship: req.body._idTraineeship,

@@ -29,12 +29,11 @@ export const appRoutes: Route[] = [
             layout: 'empty'
         },
         children: [
-            // {path: 'confirmation-required', loadChildren: () => import('app/modules/auth/confirmation-required/confirmation-required.module').then(m => m.AuthConfirmationRequiredModule)},
-            // {path: 'forgot-password', loadChildren: () => import('app/modules/auth/forgot-password/forgot-password.module').then(m => m.AuthForgotPasswordModule)},
-            // {path: 'reset-password', loadChildren: () => import('app/modules/auth/reset-password/reset-password.module').then(m => m.AuthResetPasswordModule)},
+            {path: 'confirmation-required', loadChildren: () => import('app/modules/auth/confirmation-required/confirmation-required.module').then(m => m.AuthConfirmationRequiredModule)},
+            {path: 'forgot-password', loadChildren: () => import('app/modules/auth/forgot-password/forgot-password.module').then(m => m.AuthForgotPasswordModule)},
+            {path: 'reset-password', loadChildren: () => import('app/modules/auth/reset-password/reset-password.module').then(m => m.AuthResetPasswordModule)},
             {path: 'sign-in', loadChildren: () => import('app/modules/auth/sign-in/sign-in.module').then(m => m.AuthSignInModule)},
-           
-            // {path: 'sign-up', loadChildren: () => import('app/modules/auth/sign-up/sign-up.module').then(m => m.AuthSignUpModule)}
+            {path: 'sign-up', loadChildren: () => import('app/modules/auth/sign-up/sign-up.module').then(m => m.AuthSignUpModule)}
         ]
     },
 
@@ -73,12 +72,12 @@ export const appRoutes: Route[] = [
         component  : LayoutComponent,
         resolve    : {
             initialData: InitialDataResolver,
-            
-        },
-        children   : [
+        },children   : [
             {path:'traineeships',children:[
                 {path:'',loadChildren:()=>import('app/modules/admin/traineeships/traineeships.module').then(m=>m.TraineeshipsModule)}
             ]},
+
+
             {path:'users',children:[
                 {path:'',loadChildren:()=>import('app/modules/admin//users/users.module').then(m=>m.UsersModule)}
             ]}, 
@@ -98,8 +97,13 @@ export const appRoutes: Route[] = [
             {path:'projects',children:[
                 {path:'',loadChildren:()=>import('app/modules/admin/project/project.module').then(m=>m.ProjectModule)}
             ]},
+            {path:'files',children:[
+                {path:'',loadChildren:()=>import('app/modules/admin/file/file.module').then(m=>m.FileModule)}
+            ]},
 
 
+
+       
 
             // Dashboards
             {path: 'dashboards', children: [

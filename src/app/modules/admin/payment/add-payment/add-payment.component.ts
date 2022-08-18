@@ -25,6 +25,7 @@ title:string='Add Payment'
 
   ngOnInit(): void {
     this.addPayment=this.formBuilder.group({
+      paymentName:[''],
       amount:[''],
       typeOfPayment:[''],
       _idStudent:[''],
@@ -35,6 +36,7 @@ title:string='Add Payment'
         return e.role==='student'
       })      
     })
+    
     this.traineeshipService.getAllTraineeships().subscribe(data=>{
       this.traineeships=data.Traineeships
     })

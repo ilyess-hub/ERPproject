@@ -19,14 +19,10 @@ export class UserService {
   getById(id:any){
     return this._httpClient.get<{user:any}>(`${this.userUrl}/${id}`)
   }
-
-
-
-  editUser(user: any) {
-    return this._httpClient.put<{user : any}>(`${ this.userUrl }/${user._id}`, user);
+  editUser(user:any){
+    return this._httpClient.put(`${this.userUrl}/${user._id}`,user)
   }
-
-  deleteUser(id: any) {
-    return this._httpClient.delete<{user : any}>(`${ this.userUrl }/${id}`)
-    }
+  deleteUser(id:any){
+    return this._httpClient.delete(`${this.userUrl}/${id}`)
+  }
 }
