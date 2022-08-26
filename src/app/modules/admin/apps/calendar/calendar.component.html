@@ -319,6 +319,7 @@
                                                 [ngClass]="getCalendar(eventForm.get('calendarId').value)?.color"></span>
                                             <span class="ml-3">{{getCalendar(eventForm.get('calendarId').value)?.title}}</span>
                                         </mat-select-trigger>
+
                                         <ng-container *ngFor="let calendar of calendars">
                                             <mat-option [value]="calendar.id">
                                                 <div class="inline-flex items-center">
@@ -329,6 +330,8 @@
                                                 </div>
                                             </mat-option>
                                         </ng-container>
+
+                                        
                                     </mat-select>
                                 </mat-form-field>
                             </div>

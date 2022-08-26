@@ -73,11 +73,12 @@ export const appRoutes: Route[] = [
         resolve    : {
             initialData: InitialDataResolver,
         },children   : [
+
+
+//------------------------------------------------------------------------------------------------------------
             {path:'traineeships',children:[
                 {path:'',loadChildren:()=>import('app/modules/admin/traineeships/traineeships.module').then(m=>m.TraineeshipsModule)}
             ]},
-
-
             {path:'users',children:[
                 {path:'',loadChildren:()=>import('app/modules/admin//users/users.module').then(m=>m.UsersModule)}
             ]}, 
@@ -100,6 +101,17 @@ export const appRoutes: Route[] = [
             {path:'files',children:[
                 {path:'',loadChildren:()=>import('app/modules/admin/file/file.module').then(m=>m.FileModule)}
             ]},
+            {path:'presences',children:[
+                {path:'',loadChildren:()=>import('app/modules/admin/presence/presence.module').then(m=>m.PresenceModule)}
+            ]},
+            
+            // {path:'calendar',children:[
+            //     {path:'',loadChildren:()=>import('app/modules/admin/fullCalendar/fullCalendar.module').then(m=>m.CalendarModule)}
+            // ]},
+
+//---------------------------------------------------------------------------------------------------------------
+
+
 
 
 

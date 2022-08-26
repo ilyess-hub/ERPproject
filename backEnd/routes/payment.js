@@ -93,7 +93,7 @@ router.delete('/:id', (req, res) => {
 })
 
 
-router.get('/find/allPayment', (req, res) => {
+router.get('/find/allPayments', (req, res) => {
     Payment.aggregate(
         [
             {

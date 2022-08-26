@@ -30,7 +30,7 @@
 
 
                  <!-- details -->
-                <div class="flex">
+                <!-- <div class="flex">
                     <mat-form-field class="flex-auto">
                         <input
                             matInput
@@ -39,7 +39,7 @@
                             [(ngModel)]="file.details"
                         />
                     </mat-form-field>
-                </div>
+                </div> -->
 
                
 
@@ -80,12 +80,10 @@
                             name="payment">
                             <mat-option
                                 *ngFor="let payment of payments"
-                                [value]="payment_id"
+                                [value]="payment._id"
                                 >{{ payment.paymentName }}</mat-option>
                         </mat-select>
                     </mat-form-field>
-
-
 
                 </div>
 

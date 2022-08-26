@@ -7,6 +7,11 @@ const invoiceSchema = mongoose.Schema({
 
         enum: ['invoice', 'quotation']
     },
+    _idClient:
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
     _idFile:
     {
         type: mongoose.Schema.Types.ObjectId,

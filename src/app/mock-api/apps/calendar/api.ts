@@ -29,17 +29,23 @@ export class CalendarMockApi
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
+
     /**
      * Register Mock API handlers
      */
+
+
     registerHandlers(): void
+
+
     {
         // -----------------------------------------------------------------------------------------------------
         // @ Calendars - GET
         // -----------------------------------------------------------------------------------------------------
-        this._fuseMockApiService
-            .onGet('api/apps/calendar/calendars')
-            .reply(() => {
+
+
+
+        this._fuseMockApiService.onGet('api/apps/calendar/calendars').reply(() => {
 
                 // Clone the calendars
                 const calendars = cloneDeep(this._calendars);
@@ -48,12 +54,15 @@ export class CalendarMockApi
                 return [200, calendars];
             });
 
+
+
         // -----------------------------------------------------------------------------------------------------
         // @ Calendars - POST
         // -----------------------------------------------------------------------------------------------------
-        this._fuseMockApiService
-            .onPost('api/apps/calendar/calendars')
-            .reply(({request}) => {
+
+
+
+        this._fuseMockApiService.onPost('api/apps/calendar/calendars').reply(({request}) => {
 
                 // Get the calendar as the new calendar
                 const newCalendar = cloneDeep(request.body.calendar);
@@ -68,12 +77,16 @@ export class CalendarMockApi
                 return [200, newCalendar];
             });
 
+
+
         // -----------------------------------------------------------------------------------------------------
         // @ Calendars - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._fuseMockApiService
-            .onPatch('api/apps/calendar/calendars')
-            .reply(({request}) => {
+
+
+
+
+        this._fuseMockApiService.onPatch('api/apps/calendar/calendars').reply(({request}) => {
 
                 // Get the id and calendar
                 const id = request.body.id;
@@ -99,12 +112,14 @@ export class CalendarMockApi
                 return [200, updatedCalendar];
             });
 
+
+
         // -----------------------------------------------------------------------------------------------------
         // @ Calendars - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._fuseMockApiService
-            .onDelete('api/apps/calendar/calendars')
-            .reply(({request}) => {
+
+
+        this._fuseMockApiService.onDelete('api/apps/calendar/calendars').reply(({request}) => {
 
                 // Get the id
                 const id = request.params.get('id');
@@ -120,12 +135,15 @@ export class CalendarMockApi
                 return [200, true];
             });
 
+
+
         // -----------------------------------------------------------------------------------------------------
         // @ Events - GET
         // -----------------------------------------------------------------------------------------------------
-        this._fuseMockApiService
-            .onGet('api/apps/calendar/events')
-            .reply(({request}) => {
+
+
+
+        this._fuseMockApiService.onGet('api/apps/calendar/events').reply(({request}) => {
 
                 // Get the start and end dates as moment
                 const viewStart = moment(request.params.get('start')).startOf('day');
@@ -225,12 +243,15 @@ export class CalendarMockApi
                 return [200, results];
             });
 
+
+
         // -----------------------------------------------------------------------------------------------------
         // @ Event - POST
         // -----------------------------------------------------------------------------------------------------
-        this._fuseMockApiService
-            .onPost('api/apps/calendar/event')
-            .reply(({request}) => {
+
+
+
+        this._fuseMockApiService.onPost('api/apps/calendar/event').reply(({request}) => {
 
                 // Get the event as the new event
                 const newEvent = cloneDeep(request.body.event);
@@ -245,12 +266,16 @@ export class CalendarMockApi
                 return [200, newEvent];
             });
 
+
+
+
         // -----------------------------------------------------------------------------------------------------
         // @ Event - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._fuseMockApiService
-            .onPatch('api/apps/calendar/event')
-            .reply(({request}) => {
+
+
+
+        this._fuseMockApiService.onPatch('api/apps/calendar/event').reply(({request}) => {
 
                 // Get the id and event
                 const id = request.body.id;
@@ -276,12 +301,15 @@ export class CalendarMockApi
                 return [200, updatedEvent];
             });
 
+
+
         // -----------------------------------------------------------------------------------------------------
         // @ Event - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._fuseMockApiService
-            .onDelete('api/apps/calendar/event')
-            .reply(({request}) => {
+
+
+
+        this._fuseMockApiService.onDelete('api/apps/calendar/event').reply(({request}) => {
 
                 // Get the id and event
                 const id = request.params.get('id');
@@ -294,12 +322,15 @@ export class CalendarMockApi
                 return [200, true];
             });
 
+
+
         // -----------------------------------------------------------------------------------------------------
         // @ Recurring Event - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._fuseMockApiService
-            .onPatch('api/apps/calendar/recurring-event')
-            .reply(({request}) => {
+
+
+
+        this._fuseMockApiService.onPatch('api/apps/calendar/recurring-event').reply(({request}) => {
 
                 // Get the event, original event and mode
                 const event = cloneDeep(request.body.event);
@@ -416,12 +447,14 @@ export class CalendarMockApi
                 return [200, true];
             });
 
+
         // -----------------------------------------------------------------------------------------------------
         // @ Recurring Event - DELETE
         // -----------------------------------------------------------------------------------------------------
-        this._fuseMockApiService
-            .onDelete('api/apps/calendar/recurring-event')
-            .reply(({request}) => {
+
+
+
+        this._fuseMockApiService.onDelete('api/apps/calendar/recurring-event').reply(({request}) => {
 
                 // Get the event and mode
                 const event = JSON.parse(request.params.get('event') ?? '');
@@ -503,19 +536,23 @@ export class CalendarMockApi
                 return [200, true];
             });
 
+
         // -----------------------------------------------------------------------------------------------------
         // @ Settings - GET
         // -----------------------------------------------------------------------------------------------------
-        this._fuseMockApiService
-            .onGet('api/apps/calendar/settings')
-            .reply(() => [200, cloneDeep(this._settings)]);
+
+
+
+        this._fuseMockApiService.onGet('api/apps/calendar/settings').reply(() => [200, cloneDeep(this._settings)]);
+
 
         // -----------------------------------------------------------------------------------------------------
         // @ Settings - PATCH
         // -----------------------------------------------------------------------------------------------------
-        this._fuseMockApiService
-            .onPatch('api/apps/calendar/settings')
-            .reply(({request}) => {
+
+
+
+        this._fuseMockApiService.onPatch('api/apps/calendar/settings').reply(({request}) => {
 
                 // Get the settings
                 const settings = cloneDeep(request.body.settings);
@@ -527,12 +564,15 @@ export class CalendarMockApi
                 return [200, settings];
             });
 
+
+
         // -----------------------------------------------------------------------------------------------------
         // @ Weekdays - GET
         // -----------------------------------------------------------------------------------------------------
-        this._fuseMockApiService
-            .onGet('api/apps/calendar/weekdays')
-            .reply(() => {
+
+
+
+        this._fuseMockApiService.onGet('api/apps/calendar/weekdays').reply(() => {
 
                 // Clone the weekdays
                 const weekdays = cloneDeep(this._weekdays);
@@ -559,6 +599,8 @@ export class CalendarMockApi
             });
     }
 
+
+
     // -----------------------------------------------------------------------------------------------------
     // @ Private methods
     // -----------------------------------------------------------------------------------------------------
@@ -571,6 +613,8 @@ export class CalendarMockApi
      * @param until
      * @private
      */
+
+    
     private _generateRuleset(event: any, dtStart: any, until: any): RRuleSet | RRule
     {
         // Parse the recurrence rules
@@ -621,4 +665,7 @@ export class CalendarMockApi
         // Create an RRuleSet from the ruleSet array
         return rrulestr(ruleSet.join('\n'), {forceset: true});
     }
+
+
+
 }

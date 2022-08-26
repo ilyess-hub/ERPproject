@@ -9,7 +9,63 @@ import { Calendar, CalendarEvent, CalendarEventEditMode, CalendarSettings, Calen
     providedIn: 'root'
 })
 export class CalendarService
+
 {
+  //Using our calendar service-------------------------------------------------------------------------------------------------------------------------
+calendarUrl:string="http://localhost:3000/api/calendars"
+
+
+
+
+addErpCalendar(calendar: any) {
+    return this._httpClient.post(this.calendarUrl +"/day/details",calendar );
+  }
+
+getAllCalendar()  {
+  return this._httpClient.get<{Calendars:any}>(this.calendarUrl);
+ }
+
+ editCalendar(calendar: any) {
+  return this._httpClient.put<{Calendar : any}>(`${ this.calendarUrl }/${calendar._id}`, calendar);
+
+}
+
+getCalendarById(id: any) {
+
+  return this._httpClient.get<{Calendar: any}>(`${ this.calendarUrl }/${id}`)
+}
+
+deleteErpCalendar(id: any) {
+return this._httpClient.delete<{message : any}>(`${ this.calendarUrl }/${id}`)
+}
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Private
     private _calendars: BehaviorSubject<Calendar[] | null> = new BehaviorSubject(null);
     private _events: BehaviorSubject<CalendarEvent[] | null> = new BehaviorSubject(null);

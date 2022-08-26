@@ -1,0 +1,103 @@
+<div class="flex flex-col flex-auto w-full">
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-8 w-full mt-8">
+        <div
+            class="xl:col-span-2 flex flex-col flex-auto bg-card shadow rounded-2xl overflow-hidden"
+        >
+            <div class="p-6">
+                <div class="w-22">
+                    <img src="assets/images/croco/67372345_109018630440933_8444232885954674688_n.jpg" />
+                </div>
+                <div
+                    class="mr-4 text-lg font-medium tracking-tight leading-6 truncate"
+                >
+                    presences table
+                </div>
+            </div>
+            <div class="overflow-x-auto mx-6">
+                <table
+                    class="w-full bg-transparent"
+                    mat-table
+                    matSort
+                    [dataSource]="presencesDataSource"
+                >
+                    <!-- Transaction ID -->
+                    <ng-container matColumnDef="state">
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                            presence state
+                        </th>
+                        <td mat-cell *matCellDef="let presence">
+                            <span
+                                class="pr-6 font-medium text-sm text-secondary whitespace-nowrap"
+                            >
+                                {{ presence.presence }}
+                            </span>
+                        </td>
+                    </ng-container>
+
+                    <!-- Date -->
+                    <ng-container matColumnDef="session name">
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                            session Name
+                        </th>
+                        <td mat-cell *matCellDef="let presence">
+                            <span
+                                class="pr-6 whitespace-nowrap"
+                                *ngFor="let session of presence.sessions"
+                            >
+                                {{ session.nameSession }}
+                            </span>
+                        </td>
+                    </ng-container>
+
+                    <!-- Name -->
+                    <ng-container matColumnDef="student name">
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                            student Name
+                        </th>
+                        <td mat-cell *matCellDef="let presence">
+                            <span
+                                class="pr-6 whitespace-nowrap"
+                                *ngFor="let student of presence.students"
+                            >
+                                {{ student.firstName }} {{ student.lastName }}
+                            </span>
+                        </td>
+                    </ng-container>
+                    <ng-container matColumnDef="action">
+                        <th mat-header-cell mat-sort-header *matHeaderCellDef>
+                            Action
+                        </th>
+                        <td mat-cell *matCellDef="let presence">
+                            <button
+                                mat-flat-button
+                                color="primary"
+                                class="m-1"
+                                (click)="edit(presence._id)"
+                            >
+                                edit
+                            </button>
+                            <button
+                                mat-flat-button
+                                color="warn"
+                                class="m-1"
+                                (click)="delete(presence._id)"
+                            >
+                                Delete
+                            </button>
+                        </td>
+                    </ng-container>
+
+                    <tr
+                        mat-header-row
+                        *matHeaderRowDef="presencesTableColumns"
+                    ></tr>
+                    <tr
+                        class="order-row h-16"
+                        mat-row
+                        *matRowDef="let row; columns: presencesTableColumns"
+                    ></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

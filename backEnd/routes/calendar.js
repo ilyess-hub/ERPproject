@@ -4,11 +4,28 @@ const Calendar = require('../models/calendar')
 const router = express.Router()
 //------------------------------------------------------------------------------------------
 
+router.get("/day/details",(req,res)=>{
+        Calendar.aggregate([
+
+            
+        ])
+
+
+
+
+})
+
+
+
+
+
+
 
 router.post('/', (req, res) => {
     console.log('here into add Calendars', req.body);
     // add object to db
     const calendarObj = new Calendar({
+        eventName:req.body.eventName,
         _idTraineeship:req.body._idTraineeship,
         _idRoom:req.body._idRoom,
         sessions :req.body.sessions,
@@ -53,6 +70,7 @@ router.put('/:id', (req, res) => {
 
     const obj = new Facture({
         _id: req.body._id,
+        eventName:req.body.eventName,
         _idTraineeship:req.body._idTraineeship,
         _idRoom:req.body._idRoom,
         sessions :req.body.sessions,
@@ -62,7 +80,7 @@ router.put('/:id', (req, res) => {
         console.log('after update', result)
         if (result) {
             res.status(200).json({
-                message: obj 
+                Calendar: obj 
             })
         }
 

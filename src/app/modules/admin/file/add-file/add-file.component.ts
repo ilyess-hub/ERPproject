@@ -20,7 +20,6 @@ file:any={}
   ngOnInit(): void {
 
     this.fileForm=this.formBuilder.group({
-     details:[''],
      _idStudent:[''],
      _idPayment:['']
     })
@@ -37,7 +36,9 @@ this.payments=data.payments
   }
 
 
-  addFile(){
+addFile(){
+  console.log(this.file);
+  
 this.fileService.addFile(this.file).subscribe((data)=>{
   console.log(data);
 this.router.navigate([`files/filesTable`])

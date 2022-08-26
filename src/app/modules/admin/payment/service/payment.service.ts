@@ -12,7 +12,7 @@ export class PaymentService {
     return this.httpClient.post(`${this.paymentUrl}`,payment)
   }
   getAllPayments(){
-    return this.httpClient.get<{payments:any}>(`${this.paymentUrl}/find/allPayment`)
+    return this.httpClient.get<{payments:any}>(`${this.paymentUrl}/find/allPayments`)
   }
   getPaymentById(id:any){
     return this.httpClient.get<{payment:any}>(`${this.paymentUrl}/${id}`)

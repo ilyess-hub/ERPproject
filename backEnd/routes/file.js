@@ -8,7 +8,6 @@ router.post('/', (req, res) => {
     console.log('here into add Files', req.body);
     // add object to db
     const fileObj = new File({
-    details:req.body.details,
     _idPayment:req.body._idPayment,
     _idStudent:req.body._idStudent
     });
@@ -54,7 +53,6 @@ router.put('/:id', (req, res) => {
 
     const obj = new File({
         _idFile: req.body._idFile,
-        details:req.body.details,
         _idPayment:req.body._idPayment,
         _idStudent:req.body._idStudent
     })
@@ -132,7 +130,6 @@ router.get("/find/allFiles",(req,res)=>{
           "students.firstName":1,
           "students.lastName":1,
           "students._id":1,
-          "details":1
           }
           },
           
@@ -146,7 +143,6 @@ router.get("/find/allFiles",(req,res)=>{
             total: {
                 $sum: {$toInt:"$payments.amount"}
               },
-            details:{$first:"$details"},
            }
           }
 

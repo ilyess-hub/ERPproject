@@ -90,4 +90,35 @@ router.delete('/:id', (req, res) => {
 
     })
 })
+
+
+
+router.get('/find/allPresences', (req, res) => {
+    Presence.aggregate(
+        [
+            {
+                $lookup: {
+                    from: "users", // collection to join
+                    localField: "_idStudent", //field from the input documents
+                    foreignField: "_id", //field from the documents of the "from" collection
+                    as: "students", // output array field
+                }
+            },
+            {
+                $lookup: {
+                    from: "sessions", // collection to join
+                    localField: "_idSession", //field from the input documents
+                    foreignField: "_id", //field from the documents of the "from" collection
+                    as: "sessions", // output array field
+                },
+            }
+        ],
+        (error, docs) => {
+            res.status(200).json({
+                presences: docs,
+            });
+        }
+    )
+
+})
 module.exports=router

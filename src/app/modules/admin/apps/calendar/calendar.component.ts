@@ -58,6 +58,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      * Constructor
      */
     constructor(
+
         private _calendarService: CalendarService,
         private _changeDetectorRef: ChangeDetectorRef,
         @Inject(DOCUMENT) private _document: Document,
@@ -68,6 +69,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
         private _viewContainerRef: ViewContainerRef
     )
     {
+        
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -103,6 +105,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
     /**
      * On init
      */
+
     ngOnInit(): void
     {
         // Create the event form
@@ -956,6 +959,7 @@ export class CalendarComponent implements OnInit, AfterViewInit, OnDestroy
      *
      * @private
      */
+
     private _updateEndValue(): void
     {
         // Get the event recurrence

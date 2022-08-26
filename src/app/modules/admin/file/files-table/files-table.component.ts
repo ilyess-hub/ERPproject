@@ -12,7 +12,7 @@ export class FilesTableComponent implements OnInit {
 
 
   filesDataSource: MatTableDataSource<any>
-  filesTableColumns: string[] = ['firstName','lastName','traineeships',"totalPrice","details"];
+  filesTableColumns: string[] = ['firstName','lastName','traineeships',"totalPrice"];
   constructor(private fileService:FileService, private router:Router) { }
 
   ngOnInit(): void {
